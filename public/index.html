@@ -33,7 +33,7 @@
     </nav>
     <!-- navbar end -->
     <!-- hero sectional -->
-    <div class="section" id="index-banner">
+    <div class="section pad margin" id="index-banner">
         <!-- want margins -->
         <div class="container">
             <h1 class="header center deep-purple-text accent-4 font-lucky">Party Like Royalty</h1>
@@ -80,9 +80,9 @@
     </div>
     <!-- end hero section -->
     <!-- about section start -->
-    <div class="section" id="about">
-        <div class="deep-purple deep-purple-text text-lighten-5">
-            <div class="container pad">
+    <div class="section pad margin" id="about">
+        <div class="deep-purple deep-purple-text text-lighten-5 pad margin">
+            <div class="container">
 
                 <h3 class="center font-lobster">Itinerary</h3>
                 <div class="row">
@@ -114,8 +114,8 @@
     </div>
     <!-- about section end -->
     <!-- rsvp section start -->
-    <div class="section" id="rsvp">
-        <div class="container pad deep-purple-text center">
+    <div class="section pad margin" id="rsvp">
+        <div class="container pad margin deep-purple-text center">
             <h3 class="font-lobster">
                 Register To Attend
             </h3>
@@ -128,24 +128,24 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person_pin</i>
-                            <input id="full_name" type="text" class="validate">
+                            <input id="full_name" type="text" class="validate" required>
                             <label for="full_name">Full Name (First Last)</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6">
                             <i class="material-icons prefix">email</i>
-                            <input id="email" type="email" class="validate">
+                            <input id="email" type="email" class="validate" required>
                             <label for="email">Email</label>
                         </div>
                         <div class="input-field col s12 m6">
                             <i class="material-icons prefix">phone</i>
-                            <input id="icon_telephone" type="tel" class="validate">
+                            <input id="icon_telephone" type="tel" class="validate" required>
                             <label for="icon_telephone">Telephone</label>
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn waves-effect waves-light deep-purple" type="submit" name="action">Submit
+                        <button class="btn waves-effect waves-light deep-purple" id="submit-rsvp">Submit
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -155,8 +155,8 @@
     </div>
     <!-- rsvp section end -->
     <!-- upload section start -->
-    <div class="section" id="upload">
-        <div class="deep-purple deep-purple-text text-lighten-5">
+    <div class="section pad margin" id="upload">
+        <div class="deep-purple pad deep-purple-text text-lighten-5">
             <div class="container pad center">
                 <h3 class="font-lobster">
                     Add to the Cloud Scrapbook
@@ -185,6 +185,8 @@
     <!-- Javascript -->
     <!-- Materialize @ https://materializecss.com/getting-started.html -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Custom -->
     <script src="./assets/js/script.js"></script>
 </body>
