@@ -1,0 +1,19 @@
+.font-lobster {
+    font-family: 'Lobster', cursive;
+}
+
+.font-allura {
+    font-family: 'Allura', cursive;
+}
+
+.font-lucky {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.icon-block {
+    padding: 20px;
+}
+
+.border-round {
+    border-radius: 1rem;
+}
