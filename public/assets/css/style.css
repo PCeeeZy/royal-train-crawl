@@ -9,6 +9,9 @@
 .font-lucky {
     font-family: 'Luckiest Guy', cursive;
 }
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
 
 .icon-block {
     padding: 20px;
@@ -16,4 +19,9 @@
 
 .border-round {
     border-radius: 1rem;
+}
+
+.pad {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
