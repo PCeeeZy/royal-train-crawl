@@ -12,7 +12,7 @@ cloudinary.config({
 module.exports = {
     uploadMediaAuto: function (req, res) {
         console.log('media controller has been fired/')
-        cloudinary.uploader.upload(req.body.media, { tags: 'basic_sample' })
+        cloudinary.uploader.upload(req.body, { tags: 'basic_sample' })
             .then(function (image) {
                 console.log();
                 console.log("** File Upload (Promise)");

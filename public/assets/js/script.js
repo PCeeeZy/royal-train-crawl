@@ -55,10 +55,23 @@ $submitSugg.addEventListener('click', function(e) {
 
 // media submission handler
 $mediaInputElement.addEventListener("change", handleFiles, false);
-function handleFiles() {
-  const fileList = this.files;
-  console.log(fileList)
-  $.post('/api/media', fileList[0])
+function handleFiles(event) {
+
+  const file = event.target.files[0];
+  var formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', 'ugg7g19i') //my preset
+  console.log(file);
+$.ajax({
+  method: "POST",
+  url: "/api/media",
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data: formData
+  
+})
+  // $.post('/api/media', file)
     .then(cloudinarySuccess => {
       console.log(cloudinarySuccess);
     })
