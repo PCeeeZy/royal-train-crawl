@@ -5,4 +5,7 @@ const rsvpController = require('../../controllers/rsvpController');
 router.route('/rsvp')
     .post(rsvpController.submitRSVP);
 
+router.route('/sugg')
+    .post(rsvpController.submitSuggestion);
+
 module.exports = router;

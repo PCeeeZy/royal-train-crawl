@@ -16,8 +16,4 @@ $submitRSVP.addEventListener('click', function(e) {
     $.post('/api/rsvp', userForm).then(response => {
         console.log(response)
     })
-
-
-    
-
 })
