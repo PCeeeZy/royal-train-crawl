@@ -12,38 +12,42 @@ let $suggestion = document.getElementById('suggestion');
 // rsvp submission handler
 $submitRSVP.addEventListener('click', function(e) {
     e.preventDefault();
-    let userForm = {
-        full_name: $fullName.value.trim(),
-        email: $email.value.trim(),
-        phone: $telephone.value.trim()
-    };
-
-    $("#register-form").empty();
-    $('#gonna-spin-register').html(renderSpinner());
-
-    $.post('/api/rsvp', userForm)
-        .then(response => {
-            $('#gonna-spin-register').empty();
-            $('#register-form').html(registerSuccess());
-    })
+    if ($fullName.value.trim() && $email.value.trim() && $telephone.value.trim()) {
+        let userForm = {
+            full_name: $fullName.value.trim(),
+            email: $email.value.trim(),
+            phone: $telephone.value.trim()
+        };
+    
+        $("#register-form").empty();
+        $('#gonna-spin-register').html(renderSpinner());
+    
+        $.post('/api/rsvp', userForm)
+            .then(response => {
+                $('#gonna-spin-register').empty();
+                $('#register-form').html(registerSuccess());
+        })
+    }
 })
 
 // suggestion submission handler
 $submitSugg.addEventListener('click', function(e) {
     e.preventDefault();
-    let userForm = {
-        suggestion: $suggestion.value.trim()
-    };
-
-    $('#suggestion').hide();
-    $('#gonna-spin-suggestion').html(renderSpinner());
-
-    $.post('/api/sugg', userForm)
-        .then(response => {
-            $('#gonna-spin-suggestion').empty();
-            $('#suggestion').show();
-            $suggestion.value = '';
-    });
+    if ($suggestion.value.trim()) {
+        let userForm = {
+            suggestion: $suggestion.value.trim()
+        };
+    
+        $('#suggestion').hide();
+        $('#gonna-spin-suggestion').html(renderSpinner());
+    
+        $.post('/api/sugg', userForm)
+            .then(response => {
+                $('#gonna-spin-suggestion').empty();
+                $('#suggestion').show();
+                $suggestion.value = '';
+        });
+    }
 });
 
 // ---------- utilities -------------------
