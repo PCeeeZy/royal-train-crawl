@@ -8,6 +8,9 @@ let $telephone = document.getElementById('icon_telephone');
 let $submitSugg = document.getElementById('submit-suggestion');
 let $suggestion = document.getElementById('suggestion');
 
+// media form
+let $mediaInputElement = document.getElementById("actual-media");
+
 // --------------- EVENT HANDLERS ---------------
 // rsvp submission handler
 $submitRSVP.addEventListener('click', function(e) {
@@ -49,6 +52,23 @@ $submitSugg.addEventListener('click', function(e) {
         });
     }
 });
+
+// media submission handler
+$mediaInputElement.addEventListener("change", handleFiles, false);
+function handleFiles() {
+  const fileList = this.files;
+  console.log(fileList)
+  $.post('/api/media', fileList[0])
+    .then(cloudinarySuccess => {
+      console.log(cloudinarySuccess);
+    })
+    .catch(oopsie => {
+      console.error(oopsie);
+    })
+  
+/* now you can work with the file list */
+}
+
 
 // ---------- utilities -------------------
 function renderSpinner() {
