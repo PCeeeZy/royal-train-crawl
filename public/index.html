@@ -169,7 +169,7 @@
                 Having fun at the party and have a great picture or short clip you want to share? Well upload it
                 below! It will be turned into a digital scrapbook for everyone who attends.
             </p>
-            <form action="#">
+            <form id="media-uploader">
                 <div class="file-field input-field">
                     <div class="btn deep-purple lighten-5 deep-purple-text">
                         <span>File</span>
@@ -184,6 +184,36 @@
 
     </div>
     <!-- upload section end -->
+    <!-- extra section -->
+    <div class="section pad center deep-purple-text">
+        <div class="container">
+            <h3 class="font-lobster">Extra Stuff</h3>
+            <div class="row">
+                <div class="col s12 m6">
+                    <p>
+                        Just to be clear, there is very little security here.  I am going to store your email and phone numbers securely but in plain text (facebook did this for years) and I won't be using your data in any way, other than to help manage communications for this party.  Please do not sign up with not you, or like if you don't know me.  I don't want your data, I just want to throw a fun party cause 2020 sucked.
+                    </p>
+                </div>
+                <div class="col s12 m6">
+                    <p>
+                        I just realized some of you may have some badass ideas for things to be on the scavenger hunt checklist.  If you got a good idea, drop it below and it may make it's way onto the final royal scavenger gamesheet.
+                    </p>
+                    <form>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">playlist_add</i>
+                            <input id="suggestion" type="text" class="validate" required>
+                            <label for="suggestion">Suggestion</label>
+
+                        </div>
+                        <button class="btn waves-effect waves-light deep-purple" id="submit-suggestion">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end extra -->
 
     <!-- Javascript -->
     <!-- Materialize @ https://materializecss.com/getting-started.html -->
