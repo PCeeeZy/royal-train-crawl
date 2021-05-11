@@ -55,7 +55,7 @@ $submitSugg.addEventListener('click', function(e) {
 });
 
 // media submission handler
-$mediaSubmit.addEventListener("submit", handleFiles);
+$mediaSubmit.addEventListener("click", handleFiles);
 
 function handleFiles(event) {
   event.preventDefault();
