@@ -54,34 +54,34 @@ $submitSugg.addEventListener('click', function(e) {
 });
 
 // media submission handler
-$mediaInputElement.addEventListener("change", handleFiles, false);
+$mediaInputElement.addEventListener("submit", handleFiles);
+
 function handleFiles(event) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onloadend = () => {
-    up
-  }
+  event.preventDefault();
+  // DO THE SPINNER
+  // ----------------------
   var formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', 'ugg7g19i') //my preset
-  console.log(file);
-$.ajax({
-  method: "POST",
-  url: "/api/media",
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  data: formData
-  
-})
-  // $.post('/api/media', file)
-    .then(cloudinarySuccess => {
-      console.log(cloudinarySuccess);
-    })
-    .catch(oopsie => {
-      console.error(oopsie);
-    })
+  let file = event.target.files[0];
+  // check filetype
+  if (!file.type.match('image.*')) {
+    // warn user of filetype
+    // ----------------------
+    return;
+  }
+
+  // append file to the ajax req
+  formData.append('fileAjax', file, file.name);
+  // set up the request
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api/media', true);
+  xhr.onload = function() {
+    if (xhr.status == 200) {
+      //upload complete
+    } else {
+      // upload error
+    }
+  }
+  xhr.send(formData);
   
 /* now you can work with the file list */
 }
