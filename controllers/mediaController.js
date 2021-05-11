@@ -1,7 +1,13 @@
 require('dotenv').config()
 const axios = require('axios');
 var cloudinary = require('cloudinary').v2;
+const multer = require('multer');
+const sharp = require('sharp');
+const {v4: uuid} = require('uuid');
 
+const upload = multer({limits: {
+    fileSize: 4000000
+}}).single('avatar');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
@@ -12,7 +18,38 @@ cloudinary.config({
 module.exports = {
     uploadMediaAuto: function (req, res) {
         console.log('media controller has been fired/')
-        console.log("req", req.body)
+        upload(req, res, async function(err) {
+            if(err || req.file === undefined) {
+                console.log(err);
+                res.status(422).json({msg: "oopsie"})
+            } else {
+                console.log("req", req.file)
+                let fileName = uuid() + ".jpeg"
+                // let fileName = "blah.jpeg"
+                let image = await sharp(req.file.buffer).jpeg({
+                    quality: 80
+                }).toFile('./uploads/'+fileName)
+                
+                .catch(err => {
+                    console.log('errror: ', err)
+                })
+
+                cloudinary.uploader.upload("./uploads/"+fileName, function(error, result) {
+                    if (error) {
+                        console.log("cloudinary error")
+                        res.status(422).json({msg: "oopsie"})
+                    } else {
+                        console.log('media successfully clouded?');
+                        console.log(result)
+                        res.status(200).json({
+                            msg: "good work",
+                            checkThis: result
+                        })
+                    
+                    }
+                })
+            }
+        })
         // cloudinary.uploader.upload(req.body, { tags: 'basic_sample' })
         //     .then(function (image) {
         //         console.log();
@@ -30,8 +67,5 @@ module.exports = {
         //             res.json({msg:"error"})
         //         }
         //     });
-        res.status(200).json({
-            msg: "good work"
-        })
     }
 }

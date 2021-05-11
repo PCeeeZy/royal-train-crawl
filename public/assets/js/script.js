@@ -70,12 +70,13 @@ function handleFiles(event) {
   //   // ----------------------
   //   return;
   // }
-
+  console.log("file", file);
   // append file to the ajax req
-  formData.append('fileAjax', file, file.name);
+  formData.append('name', file.name)
+  formData.append('avatar', file);
   // set up the request
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/media', true);
+  xhr.open('POST', '/api/media');
   xhr.onload = function() {
     if (xhr.status == 200) {
       //upload complete
