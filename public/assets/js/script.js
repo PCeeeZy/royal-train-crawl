@@ -10,6 +10,7 @@ let $suggestion = document.getElementById('suggestion');
 
 // media form
 let $mediaInputElement = document.getElementById("actual-media");
+let $mediaSubmit = document.getElementById("submit-media");
 
 // --------------- EVENT HANDLERS ---------------
 // rsvp submission handler
@@ -54,14 +55,14 @@ $submitSugg.addEventListener('click', function(e) {
 });
 
 // media submission handler
-$mediaInputElement.addEventListener("submit", handleFiles);
+$mediaSubmit.addEventListener("submit", handleFiles);
 
 function handleFiles(event) {
   event.preventDefault();
   // DO THE SPINNER
   // ----------------------
   var formData = new FormData();
-  let file = event.target.files[0];
+  let file = $mediaInputElement.files[0];
   // check filetype
   if (!file.type.match('image.*')) {
     // warn user of filetype
