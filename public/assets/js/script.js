@@ -59,6 +59,7 @@ $mediaSubmit.addEventListener("click", handleFiles);
 
 function handleFiles(event) {
   event.preventDefault();
+  console.log('is this click even working')
   // DO THE SPINNER
   // ----------------------
   var formData = new FormData();
