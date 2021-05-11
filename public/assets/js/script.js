@@ -56,8 +56,12 @@ $submitSugg.addEventListener('click', function(e) {
 // media submission handler
 $mediaInputElement.addEventListener("change", handleFiles, false);
 function handleFiles(event) {
-
   const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onloadend = () => {
+    up
+  }
   var formData = new FormData();
   formData.append('file', file);
   formData.append('upload_preset', 'ugg7g19i') //my preset

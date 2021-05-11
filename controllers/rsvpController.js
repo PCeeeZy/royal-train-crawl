@@ -19,4 +19,5 @@ module.exports = {
                 })
             })
     }
+    //need controller to be able to count each royal theme chosen
 };
