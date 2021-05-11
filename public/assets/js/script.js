@@ -64,11 +64,11 @@ function handleFiles(event) {
   var formData = new FormData();
   let file = $mediaInputElement.files[0];
   // check filetype
-  if (!file.type.match('image.*')) {
-    // warn user of filetype
-    // ----------------------
-    return;
-  }
+  // if (!file.type.match('image.*')) {
+  //   // warn user of filetype
+  //   // ----------------------
+  //   return;
+  // }
 
   // append file to the ajax req
   formData.append('fileAjax', file, file.name);
