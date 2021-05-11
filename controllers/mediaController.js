@@ -4,6 +4,7 @@ var cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const sharp = require('sharp');
 const {v4: uuid} = require('uuid');
+const { Media } = require('../models');
 
 const upload = multer({limits: {
     fileSize: 4000000
@@ -34,17 +35,26 @@ module.exports = {
                     console.log('errror: ', err)
                 })
 
-                cloudinary.uploader.upload("./uploads/"+fileName, function(error, result) {
+                cloudinary.uploader.upload("./uploads/"+fileName, async (error, result) => {
                     if (error) {
                         console.log("cloudinary error")
-                        res.status(422).json({msg: "oopsie"})
+                        res.status(422).json({msg: "cloudinary oopsie"})
                     } else {
                         console.log('media successfully clouded?');
                         console.log(result)
-                        res.status(200).json({
-                            msg: "good work",
-                            checkThis: result
-                        })
+                        try {
+                            const imageAdded = await Media.create({
+                                ...result,
+                                tags: "test"
+                            });
+                            res.status(200).json({
+                                msg: "good work",
+                                checkThis: result
+                            })
+                        } catch (err) {
+                            res.status(422).json({msg: "db oopsie"})
+                        }
+                        
                     
                     }
                 })
