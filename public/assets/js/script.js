@@ -80,8 +80,10 @@ function handleFiles(event) {
   xhr.onload = function() {
     if (xhr.status == 200) {
       //upload complete
+      console.log('it uploaded just fine')
     } else {
       // upload error
+      console.log('theres been an error')
     }
   }
   xhr.send(formData);
