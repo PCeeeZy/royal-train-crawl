@@ -28,7 +28,7 @@ Media.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'reservation',
+    modelName: 'media',
   }
 );
 
