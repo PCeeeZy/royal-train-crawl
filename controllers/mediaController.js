@@ -28,16 +28,12 @@ module.exports = {
                 let fileName = uuid() + ".jpeg"
                 // let fileName = "blah.jpeg"
                 let image = await sharp(req.file.buffer).jpeg({
-                    quality: 80
-                }).toFile('./uploads/'+fileName)
-                
-                .catch(err => {
-                    console.log('errror: ', err)
-                })
-
-                cloudinary.uploader.upload("./uploads/"+fileName, async (error, result) => {
+                    quality: 100
+                });
+                cloudinary.uploader.upload('./uploads/' + fileName, async (error, result) => {
                     if (error) {
                         console.log("cloudinary error")
+                        console.log(error);
                         res.status(422).json({msg: "cloudinary oopsie"})
                     } else {
                         console.log('media successfully clouded?');
@@ -58,6 +54,7 @@ module.exports = {
                     
                     }
                 })
+                
             }
         })
         // cloudinary.uploader.upload(req.body, { tags: 'basic_sample' })
